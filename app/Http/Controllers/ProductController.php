@@ -91,23 +91,17 @@ class ProductController extends Controller
         ]);
         
                 $products = Products::where('id',$id)->first();
-               
-                // if ($products->image) {
-                //     Products::delete('products_image/' . $products->image);
-                // }
-            
+           
              if(isset($request->image)){
+               
+                unlink('products_image/'.$products->image);
                 
-                
-
             $imageName =time().'.'.$request->image->extension();
             $request->image->move(public_path('products_image'),$imageName);
+            
             $products->image =$imageName;
-           
+          
 }
-
-
-//         dd($imageName);
          $products->name = $request->name;
          $products->description =$request->description;
          $products->email =$request->email;
