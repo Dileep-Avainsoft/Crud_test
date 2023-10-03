@@ -29,9 +29,9 @@
         <td> {{ $product->email }}</td>
         <td> {{ $product->description }}</td>
         <td> <img src="products_image/{{ $product->image }}" width="100"></td>
-        <td><a href="products/edit/{{$product->id}}" class="btn btn-primary">Edit</a>
-        <a href="products/show/{{$product->id}}" class="btn btn-success">View</a>
-        <a href="products/delete/{{$product->id}}" class="btn btn-danger">Delete</a>
+        <td><a href="products/edit/{{encrypt($product->id)}}" class="btn btn-primary">Edit</a>
+        <a href="products/show/{{encrypt($product->id)}}" class="btn btn-success">View</a>
+        <a href="products/delete/{{encrypt($product->id)}}" class="btn btn-danger">Delete</a>
 </td>
     </tr>
     @endforeach

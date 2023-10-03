@@ -58,7 +58,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        $product = Products::where('id',$id)->first();
+        $product = Products::where('id',decrypt($id))->first();
         return view('products.show',['products'=> $product]);
        
     }
@@ -69,7 +69,7 @@ class ProductController extends Controller
     public function edit($id)
     {
 //            dd($id);
-         $product = Products::where('id',$id)->first();
+         $product = Products::where('id',decrypt($id))->first();
 //         print_r($product);
 
 //    dd($product);
@@ -121,7 +121,7 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        $product = Products::where('id',$id)->first();
+        $product = Products::where('id',decrypt($id))->first();
         $product->delete();
         return redirect()->route('products.view')->withSuccess('Products Delete !!!!');
     }
